@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/joshuambg/sandbox/issues"
   },
-  "homepage": "https://github.com/joshuambg/sandbox#readme"
+  "homepage": "https://github.com/joshuambg/sandbox#readme",
+  "dependencies": {
+    "glob": "^7.1.6",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8"
+  }
 }

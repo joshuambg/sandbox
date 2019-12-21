@@ -1,6 +1,6 @@
 
 
-export const uniq = (a) => {
+module.exports.uniq = (a) => {
   const prims = { boolean: {}, number: {}, string: {} };
   const objs = [];
 
