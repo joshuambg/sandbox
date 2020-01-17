@@ -6,8 +6,8 @@
 // });
 
 Object.assign(module.exports, 
-	require('./helpers/get-img-head'),
-	require('./helpers/replace-html-entites'),
-	require('./helpers/sequence-promises'),
-	require('./helpers/uniq'),
+	require('./get-img-head'),
+	require('./replace-html-entites'),
+	require('./sequence-promises'),
+	require('./uniq'),
 );

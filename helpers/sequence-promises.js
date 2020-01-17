@@ -1,5 +1,4 @@
 
-const request = require('request-promise-native'); 
 
 module.exports.sequencePromises = (myArg, promiseFunc, multiAtOncePassed) => {
 	const multiAtOnce = multiAtOncePassed ? parseInt(multiAtOncePassed) : multiAtOncePassed;
