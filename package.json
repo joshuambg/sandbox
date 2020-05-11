@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/joshuambg/sandbox.git"
   },
-  "author": "",
+  "author": "Joshua Glasman",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/joshuambg/sandbox/issues"
