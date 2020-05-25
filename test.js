@@ -1,10 +1,14 @@
 
 const path = require('path');
-const {sequencePromises} = require('./helpers')
+const {sequencePromises,uniq} = require('./index')
 const urlparser = require('url');
 const request = require('request-promise-native'); 
 const { JSDOM } = require("jsdom");
+const fs = require("fs");
+const linkscrape = require('linkscrape');
+const isReachable = require('is-reachable');
 
+const urlsHTML = fs.readFileSync('urls.html','utf8')
 // const { document } = new JSDOM(html).window;
 
 const promiseFunc = (uri) => {
@@ -31,15 +35,11 @@ const promiseFunc = (uri) => {
     .catch(e => { console.log(e.message.match(/404 - /) ? '404' : e.message); return undefined; })
 }
 
-sequencePromises(Array(100).fill(undefined).map((empty, index) => `https://www.sutterhealth.org/widgets/json-doctor-results?accepting-new=open^^limited^^unknown&online-service-type=&provider-gender=&medical-group=&location=San+Francisco%2C+CA&zip=&lat=37.7749295&lng=-122.4194155&q=&online-services=numberincreasing&specialty=Family+Medicine^^Internal+Medicine&provider-language=&health-plan=&health-plan-product=&start=${(index*10)+1}`), promiseFunc, 0)
-.then(pages => pages.flat().filter(doctor=>doctor && doctor.content)
-				.filter(doctor => {
-					if (Array.isArray(doctor.content.PROVIDER.ADDRESSES.ADDRESS)) {
-						return doctor.content.PROVIDER.ADDRESSES.ADDRESS.some(address => address.ADDRESS1['$'].match(/1375 Sutter Street/i))
-					} else {
-						return doctor.content.PROVIDER.ADDRESSES.ADDRESS.ADDRESS1['$'].match(/1375 Sutter Street/i)
-					}
-				}))
-.then(results => {
-	console.log(results);
-})
+linkscrape('https://framabin.org/p/?1ad7fab921332c3d#/tNm3WmC/9nE/PdBD7tDBb8yxGfFjFvetMKx65lMBQ4', urlsHTML, (scrapedlinks)=>{
+  
+  const allScraped = scrapedlinks.filter(scraped=>scraped.link)
+  sequencePromises(allScraped, (scraped) => isReachable(scraped.link, { timeout: 60000 }), 0)
+  .then(results => {
+    console.log(uniq(allScraped.filter((scraped, index) => results.flat()[index]).map(scraped=>scraped.link)).join("\n"));
+  })
+});

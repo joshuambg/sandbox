@@ -17,9 +17,16 @@
   },
   "homepage": "https://github.com/joshuambg/sandbox#readme",
   "dependencies": {
+    "@google-cloud/local-auth": "^0.1.0",
     "glob": "^7.1.6",
+    "googleapis": "^51.0.0",
+    "is-reachable": "^4.0.0",
     "jsdom": "^16.0.0",
-    "request": "^2.88.0",
+    "linkscrape": "^1.0.0",
+    "react-app-boilerplate": "file:boilerplate/react",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
     "request-promise-native": "^1.0.8"
   }
 }
