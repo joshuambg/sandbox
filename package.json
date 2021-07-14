@@ -18,6 +18,9 @@
   "homepage": "https://github.com/joshuambg/sandbox#readme",
   "dependencies": {
     "@google-cloud/local-auth": "^0.1.0",
+    "device-detector-js": "^2.2.1",
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.2",
     "glob": "^7.1.6",
     "googleapis": "^51.0.0",
     "is-reachable": "^4.0.0",

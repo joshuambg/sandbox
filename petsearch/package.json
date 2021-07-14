@@ -1,0 +1,49 @@
+{
+  "name": "react-app-boilerplate",
+  "version": "1.2.0",
+  "description": "Simple React App Boilerplate",
+  "main": "server.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config ./webpack.dev.js",
+    "build": "yarn build:server && yarn build:client",
+    "build:server": "ets && tsc -p tsconfig.json",
+    "build:client": "rm -rf app/public/dist && webpack --config ./app/client/webpack/webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "React",
+    "Redux",
+    "Webpack",
+    "Enzyme",
+    "Jest",
+    "JavaScript",
+    "ES6",
+    "ES7"
+  ],
+  "author": "",
+  "license": "SEE LICENSE IN <LICENSE>",
+  "homepage": "",
+  "dependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
+    "@webpack-cli/serve": "^1.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-object-values-to-object-keys": "^1.0.2",
+    "babel-plugin-transform-decorators": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "copy-webpack-plugin": "^5.1.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.4.0"
+  },
+  "devDependencies": {}
+}
